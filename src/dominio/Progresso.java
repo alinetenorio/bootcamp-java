@@ -3,6 +3,9 @@ package dominio;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import dominio.conteudo.Conteudo;
+import dominio.pessoa.Dev;
+
 public class Progresso {
   private Dev dev;
   private Bootcamp bootcamp;
@@ -31,14 +34,12 @@ public class Progresso {
   public Set<Conteudo> getConteudosConcluidos() {
     return conteudosConcluidos;
   }
-  public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
-    this.conteudosConcluidos = conteudosConcluidos;
-  }
   public double getXp() {
     return xp;
   }
-  public void setXp(double xp) {
-    this.xp = xp;
+  public void adicionarXp(double xp) {
+    this.xp += xp;
+    dev.adicionarXpTotal(xp);
   } 
 
 }

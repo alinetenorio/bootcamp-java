@@ -1,11 +1,14 @@
-package dominio;
+package dominio.conteudo;
+
+import dominio.pessoa.Especialista;
 
 public class Curso extends Conteudo{
 
   private int cargaHoraria;
 
-  public Curso(String titulo, String descricao, Especialista especialista) {
+  public Curso(String titulo, String descricao, Especialista especialista, int cargaHoraria) {
     super(titulo, descricao, especialista);    
+    this.cargaHoraria = cargaHoraria;
   }
 
   @Override
@@ -25,7 +28,7 @@ public class Curso extends Conteudo{
   public String toString() {
       return "Título: " + getTitulo() +
               "\nDescrição: " + getDescricao() +
-              "Carga horária: " + cargaHoraria;
+              "\nCarga horária: " + cargaHoraria;
   }
   
 }

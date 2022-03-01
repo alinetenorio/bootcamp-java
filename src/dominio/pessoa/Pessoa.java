@@ -1,4 +1,4 @@
-package dominio;
+package dominio.pessoa;
 
 public abstract class Pessoa {
   private String nome;

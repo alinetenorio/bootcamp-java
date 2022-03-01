@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import dominio.conteudo.Conteudo;
+import dominio.pessoa.Dev;
+
 public class Bootcamp {
   private String nome;
   private String descricao;
@@ -13,7 +16,7 @@ public class Bootcamp {
   private Set<Dev> devsInscritos;
   private Set<Conteudo> conteudos;
 
-  public Bootcamp( String nome, String descricao, LocalDate dataInicial ) {
+  public Bootcamp( String nome, String descricao ) {
     this.nome = nome;
     this.descricao = descricao;
     this.dataInicial = LocalDate.now();  
@@ -22,7 +25,7 @@ public class Bootcamp {
     this.conteudos = new LinkedHashSet<>();
   }
 
-  public Bootcamp( String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal ) {
+  public Bootcamp( String nome, String descricao, LocalDate dataFinal ) {
     this.nome = nome;
     this.descricao = descricao;
     this.dataInicial = LocalDate.now();

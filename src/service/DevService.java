@@ -1,38 +1,33 @@
 package service;
 
-import java.util.Optional;
-
 import dominio.Bootcamp;
-import dominio.Dev;
 import dominio.Progresso;
+import dominio.conteudo.Conteudo;
+import dominio.pessoa.Dev;
 
 public class DevService {
   
-  public void inscreverDevBootcamp(Dev dev, Bootcamp bootcamp){
+  public void inscreverEmBootcamp(Dev dev, Bootcamp bootcamp){
     dev.getBootcampsInscritos().add(bootcamp);
-    dev.getProgressos().add(new Progresso(dev, bootcamp));
+    dev.getProgressos().put(bootcamp.getNome(), new Progresso(dev, bootcamp));
     
     bootcamp.getDevsInscritos().add(dev);
   }
 
   public void progredir(Dev dev, Bootcamp bootcamp) {
+    Progresso progresso = dev.getProgressos().get(bootcamp.getNome());
     
-    for(Progresso p : dev.getProgressos() ) {
-      if(p.getBootcamp().equals(bootcamp)) {
-        bootcamp.getConteudos()
-          .stream()
-          .forEach(conteudo -> {
-            if( p.getConteudosConcluidos().contains(conteudo) ) {
-              p.getConteudosConcluidos().add(conteudo);
-              dev.setXpTotal(dev.getXpTotal() + conteudo.calcularXp());
-            }
-          });
-        
+    for(Conteudo c : bootcamp.getConteudos()) {
+      if(!progresso.getConteudosConcluidos().contains(c)) {
+        progresso.getConteudosConcluidos().add(c);        
+        progresso.adicionarXp(c.calcularXp());        
         break;
       }
-    }
+    }  
     
-
-  
+    if(progresso.getConteudosConcluidos().size() == bootcamp.getConteudos().size()) {
+      dev.getBootcampsConcluidos().add(bootcamp);
+    }
   }
+
 }

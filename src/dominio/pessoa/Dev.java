@@ -1,29 +1,40 @@
-package dominio;
+package dominio.pessoa;
 
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import dominio.Bootcamp;
+import dominio.Progresso;
 
 public class Dev extends Pessoa {  
   private double xpTotal;
   private int nivel;
   private Set<Bootcamp> bootcampsInscritos;
   private Set<Bootcamp> bootcampsConcluidos;
-  private Set<Progresso> progressos;
+  private Map<String, Progresso> progressos;
   
   public Dev(String nome, String email) {
     super(nome, email);
     this.xpTotal = 0;
     this.bootcampsInscritos =  new LinkedHashSet<>();
     this.bootcampsConcluidos =  new LinkedHashSet<>();
-    this.progressos =  new LinkedHashSet<>();
+    this.progressos =  new HashMap<>();
   }
  
   public double getXpTotal() {
     return xpTotal;
   }
-  public void setXpTotal(double xpTotal) {
-    this.xpTotal = xpTotal;
+  public void adicionarXpTotal(double xpTotal) {
+    this.xpTotal += xpTotal;
+    subirNivel();
+  }
+  private void subirNivel() {
+    if(xpTotal / 1000 > nivel) {
+      nivel++;
+    }
   }
   public int getNivel() {
     return nivel;
@@ -37,7 +48,7 @@ public class Dev extends Pessoa {
   public Set<Bootcamp> getBootcampsConcluidos() {
     return bootcampsConcluidos;
   }
-  public Set<Progresso> getProgressos() {
+  public Map<String, Progresso> getProgressos() {
     return progressos;
   }
 

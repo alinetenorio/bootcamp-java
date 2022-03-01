@@ -1,6 +1,8 @@
-package dominio;
+package dominio.conteudo;
 
 import java.time.LocalDate;
+
+import dominio.pessoa.Especialista;
 
 public class Mentoria extends Conteudo {
   private LocalDate data;
@@ -10,8 +12,9 @@ public class Mentoria extends Conteudo {
       return XP_PADRAO + 20d;
   }
 
-  public Mentoria(String titulo, String descricao, Especialista especialista) {
+  public Mentoria(String titulo, String descricao, Especialista especialista, LocalDate data) {
     super(titulo, descricao, especialista);
+    this.data = data;
   }
 
   public LocalDate getData() {

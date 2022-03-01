@@ -1,4 +1,6 @@
-package dominio;
+package dominio.conteudo;
+
+import dominio.pessoa.Especialista;
 
 public abstract class Conteudo {
   protected static final double XP_PADRAO = 10d;
