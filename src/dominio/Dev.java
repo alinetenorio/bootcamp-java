@@ -1,36 +1,24 @@
 package dominio;
 
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
-public class Dev {
-  private String nome;
-  private String email;
+public class Dev extends Pessoa {  
   private double xpTotal;
   private int nivel;
   private Set<Bootcamp> bootcampsInscritos;
-  private Set<Bootcamp> bootcampsConcluidos = new LinkedHashSet<>();
+  private Set<Bootcamp> bootcampsConcluidos;
+  private Set<Progresso> progressos;
   
-  public Dev( String nome, String email ) {
-    this.nome = nome;
-    this.email = email;
+  public Dev(String nome, String email) {
+    super(nome, email);
     this.xpTotal = 0;
     this.bootcampsInscritos =  new LinkedHashSet<>();
     this.bootcampsConcluidos =  new LinkedHashSet<>();
+    this.progressos =  new LinkedHashSet<>();
   }
-  
-  public String getNome() {
-    return nome;
-  }
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-  public String getEmail() {
-    return email;
-  }
-  public void setEmail(String email) {
-    this.email = email;
-  }
+ 
   public double getXpTotal() {
     return xpTotal;
   }
@@ -49,10 +37,29 @@ public class Dev {
   public Set<Bootcamp> getBootcampsConcluidos() {
     return bootcampsConcluidos;
   }
+  public Set<Progresso> getProgressos() {
+    return progressos;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Dev dev = (Dev) o;
+      return Objects.equals(this.getNome(), dev.getNome()) && 
+              Objects.equals(this.getEmail(), dev.getEmail()) &&
+              Objects.equals(this.getBootcampsInscritos(), dev.getBootcampsInscritos()) && 
+              Objects.equals(this.getBootcampsConcluidos(), dev.getBootcampsConcluidos());
+  }
+
+  @Override
+  public int hashCode() {
+      return Objects.hash(this.getNome(), this.getEmail(), this.getBootcampsInscritos(), this.getBootcampsConcluidos());
+  }
 
   @Override
   public String toString() {
-    return "Nome: " + nome + "\nEmail: " + email + "\nNível: " + nivel + "\nXP: " + xpTotal;
+    return "Nome: " + this.getNome() + "\nEmail: " + this.getEmail() + "\nNível: " + this.getNivel() + "\nXP: " + this.getXpTotal();
   }
 
   public String listarBootcampsInscritos() {
