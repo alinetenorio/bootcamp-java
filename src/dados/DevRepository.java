@@ -8,15 +8,15 @@ import dominio.pessoa.Dev;
 public class DevRepository {
   private final List<Dev> listaDevs = new ArrayList<>();
 
-  public void criar() {
+  public void criar(Dev dev) {
 
   }
 
-  public void editar() {
+  public void editar(String nome) {
 
   }
 
-  public void deletar() {
+  public void deletar(String email) {
 
   }
 
@@ -27,7 +27,7 @@ public class DevRepository {
     return null;
   }
 
-  public void listarTodos() {
-
+  public List<Dev> listarTodos() {
+    return this.listaDevs;
   }
 }
