@@ -9,15 +9,17 @@ public class DevRepository {
   private final List<Dev> listaDevs = new ArrayList<>();
 
   public void criar(Dev dev) {
-
+    listaDevs.add(dev);
   }
 
-  public void editar(String nome) {
-
+  public void editarNome(String nomeNovo, String email) {
+    Dev atual = listar(email);
+    listaDevs.get(listaDevs.indexOf(atual)).setNome(nomeNovo);    
   }
 
   public void deletar(String email) {
-
+    Dev atual = listar(email);
+    listaDevs.remove(atual);
   }
 
   public Dev listar(String emailDev) {

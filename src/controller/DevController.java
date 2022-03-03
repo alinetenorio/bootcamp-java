@@ -24,8 +24,8 @@ public class DevController {
     devRepository.criar(dev);
   }
 
-  public void editar(String nome) {
-    devRepository.editar(nome);
+  public void editar(String nome, String email) {
+    devRepository.editarNome(nome, email);
   }
 
   public void deletar(String email) {

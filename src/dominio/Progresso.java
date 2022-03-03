@@ -7,9 +7,9 @@ import dominio.conteudo.Conteudo;
 import dominio.pessoa.Dev;
 
 public class Progresso {
-  private Dev dev;
-  private Bootcamp bootcamp;
-  private Set<Conteudo> conteudosConcluidos;
+  private final Dev dev;
+  private final Bootcamp bootcamp;
+  private final Set<Conteudo> conteudosConcluidos;
   private double xp;
 
   public Progresso(Dev dev, Bootcamp bootcamp) {
@@ -21,15 +21,9 @@ public class Progresso {
 
   public Dev getDev() {
     return dev;
-  }
-  public void setDev(Dev dev) {
-    this.dev = dev;
-  }
+  }  
   public Bootcamp getBootcamp() {
     return bootcamp;
-  }
-  public void setBootcamp(Bootcamp bootcamp) {
-    this.bootcamp = bootcamp;
   }
   public Set<Conteudo> getConteudosConcluidos() {
     return conteudosConcluidos;

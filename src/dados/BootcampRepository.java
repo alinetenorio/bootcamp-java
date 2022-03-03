@@ -1,5 +1,6 @@
 package dados;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,17 +8,21 @@ import dominio.Bootcamp;
 
 public class BootcampRepository {
   private final List<Bootcamp> listaBootcamps = new ArrayList<>();
+  private final Arquivo<Bootcamp> arquivo = new Arquivo<>();
 
-  public void criar() {
-
+  public void criar(Bootcamp b) throws IOException{
+    listaBootcamps.add(b);
+    arquivo.criar(b);
   }
 
-  public void editar() {
-
+  public void editarDescricao(String nome, String novaDescricao) {
+    Bootcamp atual = listar(nome);
+    listaBootcamps.get(listaBootcamps.indexOf(atual)).setDescricao(novaDescricao);    
   }
 
-  public void deletar() {
-
+  public void deletar(String nome) {
+    Bootcamp atual = listar(nome);
+    listaBootcamps.remove(atual);
   }
 
   public Bootcamp listar(String nome) {
@@ -27,7 +32,7 @@ public class BootcampRepository {
     return null;
   }
 
-  public void listarTodos() {
-
+  public List<Bootcamp> listarTodos() {
+    return this.listaBootcamps;
   }
 }

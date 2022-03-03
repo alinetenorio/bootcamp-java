@@ -1,28 +1,32 @@
 package controller;
 
+import java.io.IOException;
+import java.util.List;
+
 import dados.BootcampRepository;
 import dominio.Bootcamp;
 
 public class BootcampController {
   BootcampRepository bootcampRepository = new BootcampRepository();
 
-  public void criar() {
-
+  public void criar(String nome, String descricao) throws IOException{
+    Bootcamp bootcamp = new Bootcamp(nome, descricao);
+    bootcampRepository.criar(bootcamp);
   }
 
-  public void editar() {
-
+  public void editar(String nome, String descricao) {
+    bootcampRepository.editarDescricao(nome, descricao);
   }
 
-  public void deletar() {
-
+  public void deletar(String nome) {
+    bootcampRepository.deletar(nome);
   }
 
-  public Bootcamp listar(String nomeBootcamp) {
-    return bootcampRepository.listar(nomeBootcamp);
+  public Bootcamp listar(String nome) {
+    return bootcampRepository.listar(nome);
   }
 
-  public void listarTodos() {
-
+  public List<Bootcamp> listarTodos() {
+    return bootcampRepository.listarTodos();
   }
 }
