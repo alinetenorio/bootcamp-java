@@ -9,7 +9,7 @@ import bootcamp.dominio.Bootcamp;
 public class BootcampController {
   BootcampRepository bootcampRepository = new BootcampRepository();
 
-  public void criar(String nome, String descricao) throws IOException{
+  public void criar(String nome, String descricao) throws IOException, Exception{
     Bootcamp bootcamp = new Bootcamp(nome, descricao);
     bootcampRepository.criar(bootcamp);
   }

@@ -10,7 +10,7 @@ public class BootcampRepository {
   private final List<Bootcamp> listaBootcamps = new ArrayList<>();
   private final Arquivo<Bootcamp> arquivo = new Arquivo<>();
 
-  public void criar(Bootcamp b) throws IOException{
+  public void criar(Bootcamp b) throws IOException, Exception{
     listaBootcamps.add(b);
     arquivo.criar(b);
   }

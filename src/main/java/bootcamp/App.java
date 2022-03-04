@@ -21,8 +21,8 @@ public class App {
         rep.criar(new Bootcamp("nome", "descricao"));
 
         JSONObject a = new JSONObject();
-        a.put("key", "value");
-        System.out.println(a.toString());
+        // a.put("key", "value");
+        // System.out.println(a.toString());
         /*
         DevService service  = new DevService();
 

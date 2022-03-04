@@ -3,13 +3,18 @@ package bootcamp.dados;
 import java.io.File;
 import java.io.IOException;
 // import org.json.simple.JSONObject;
+import java.lang.reflect.Method;
+import java.util.Set;
+
+import org.json.JSONObject;
+import org.json.JSONWriter;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 
 import bootcamp.dominio.Bootcamp;
 
 public class Arquivo<T> {
-  private File recuperarArquivo(String nomeArquivo, Class<? extends Object> classe) {
-    // String path = this.getClass().getClass().get
-    // File file = new File(".\\arquivos\\nomeArquivo.txt");
+  private File recuperarArquivo(String nomeArquivo) {    
     File file = new File("src\\main\\java\\bootcamp\\dados\\arquivos\\" + nomeArquivo + ".txt");
     // JSONObject a;
     try {
@@ -17,14 +22,29 @@ public class Arquivo<T> {
     } catch (IOException e) {      
       e.printStackTrace();
     }
+    
     return file;
   }
   
-  protected void criar(T elemento) throws IOException{
-    File file = recuperarArquivo(elemento.getClass().getSimpleName(), elemento.getClass());
+  protected void criar(T elemento) throws IOException, Exception{
+    File file = recuperarArquivo(elemento.getClass().getSimpleName());
     System.out.println(file.getCanonicalPath());
-    // System.out.println(elemento.getClass().getSimpleName());
-    
+    JSONObject a = new JSONObject();
+    Method[] m = elemento.getClass().getMethods();
+    for(Method me : m) {
+      if(me.getName().contains("get") && 
+        !me.getName().contains("Class") &&
+        !me.getReturnType().getSimpleName().equals("Set") &&
+        !me.getReturnType().getSimpleName().equals("List") &&
+        !me.getReturnType().getSimpleName().equals("Map")) {
+       
+        System.out.println(me.getName());
+        a.put(me.getName().split("get")[1], me.invoke(elemento));
+        System.out.println("a: " + a);
+      } 
+    }
+    a.put("key", "value");
+    System.out.println(JSONValue.toJSONString(a));
   }
 
   /*
