@@ -1,6 +1,8 @@
 package bootcamp;
 import org.json.JSONObject;
 
+import bootcamp.controller.BootcampController;
+import bootcamp.controller.CursoController;
 import bootcamp.dados.BootcampRepository;
 import bootcamp.dominio.Bootcamp;
 import bootcamp.dominio.conteudo.Conteudo;
@@ -17,31 +19,12 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
 
-        BootcampRepository rep = new BootcampRepository();
-        rep.criar(new Bootcamp("nome", "descricao"));
-
-        JSONObject a = new JSONObject();
-        // a.put("key", "value");
-        // System.out.println(a.toString());
-        /*
-        DevService service  = new DevService();
-
-        Dev aline = new Dev("aline", "aline@email");
-        Bootcamp gft = new Bootcamp("gft", "boot java");
-        Especialista cami = new Especialista("camila", "cami@email", "instrutora", EspecialidadeEnum.BACKEND);
-        Especialista denilson = new Especialista("denilson", "d@email", "instrutor", EspecialidadeEnum.BACKEND);
-        gft.getConteudos().add(new Curso("java", "oo", cami, 60));
-        gft.getConteudos().add(new Curso("spring", "api", denilson, 40));
-
-        service.inscreverEmBootcamp(aline, gft);
-        service.progredir(aline, gft);
-        service.progredir(aline, gft);
-
-        System.out.println(gft);
-        System.out.println(gft.listarConteudos());
-        System.out.println(gft.listarDevsInscritos());
-
-        System.out.println(aline.getBootcampsConcluidos());
-        */
+        BootcampController c = new BootcampController();
+        c.criar("GFT 190", "Java");
+        c.deletar("GFT 190");
+        // CursoController cr = new CursoController();
+        // cr.criar("GFT 4", "Java", new Especialista("nome", "email", "cargo", EspecialidadeEnum.BACKEND), 99);
+        // BootcampController c = new BootcampController();
+        // c.criar("GFT 4", "Java");
     }
 }

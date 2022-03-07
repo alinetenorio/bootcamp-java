@@ -1,16 +1,23 @@
 package bootcamp.dados;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dominio.conteudo.Curso;
 import bootcamp.dominio.pessoa.Especialista;
 
 public class CursoRepository {
   private final List<Curso> listaCursos = new ArrayList<>();
+  private final Arquivo<Curso> arquivo = new Arquivo<>();
 
-  public void criar(Curso c) {
+  public void criar(Curso c) throws IOException, IllegalAccessException, IllegalArgumentException, 
+                                    InvocationTargetException, JSONException {
     listaCursos.add(c);
+    arquivo.criar(c);
   }
 
   public void editarDescricao(String titulo, String novaDescricao) {
@@ -28,9 +35,11 @@ public class CursoRepository {
     listaCursos.get(listaCursos.indexOf(atual)).setCargaHoraria(novaCargaHoraria);    
   }
 
-  public void deletar(String titulo) {
+  public void deletar(String titulo) throws IllegalAccessException, IllegalArgumentException, 
+                                            InvocationTargetException, JSONException, IOException {
     Curso atual = listar(titulo);
     listaCursos.remove(atual);
+    arquivo.deletar(atual);
   }
 
   public Curso listar(String titulo) {

@@ -1,17 +1,24 @@
 package bootcamp.dados;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dominio.conteudo.Mentoria;
 import bootcamp.dominio.pessoa.Especialista;
 
 public class MentoriaRepository {
   private final List<Mentoria> listaMentorias = new ArrayList<>();
+  private final Arquivo<Mentoria> arquivo = new Arquivo<>();
 
-  public void criar(Mentoria m) {
+  public void criar(Mentoria m) throws IllegalAccessException, IllegalArgumentException, 
+                                        InvocationTargetException, IOException, JSONException {
     listaMentorias.add(m);
+    arquivo.criar(m);
   }
 
   public void editarDescricao(String titulo, String novaDescricao) {
@@ -29,9 +36,11 @@ public class MentoriaRepository {
     listaMentorias.get(listaMentorias.indexOf(atual)).setData(novaData);    
   }
 
-  public void deletar(String titulo) {
+  public void deletar(String titulo) throws IllegalAccessException, IllegalArgumentException, 
+                                            InvocationTargetException, JSONException, IOException {
     Mentoria atual = listar(titulo);
     listaMentorias.remove(atual);
+    arquivo.deletar(atual);
   }
 
   public Mentoria listar(String titulo) {

@@ -1,6 +1,10 @@
 package bootcamp.controller;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dados.DevRepository;
 import bootcamp.dominio.pessoa.Dev;
@@ -19,7 +23,8 @@ public class DevController {
     devService.progredir(listar(emailDev), bootcampController.listar(nomeBootcamp));
   }
   
-  public void criar(String nome, String email) {
+  public void criar(String nome, String email) throws IllegalAccessException, IllegalArgumentException, 
+                                                      InvocationTargetException, IOException, JSONException {
     Dev dev = new Dev(nome, email);
     devRepository.criar(dev);
   }

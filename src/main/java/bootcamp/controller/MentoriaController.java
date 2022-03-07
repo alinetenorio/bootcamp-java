@@ -1,7 +1,11 @@
 package bootcamp.controller;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dados.MentoriaRepository;
 import bootcamp.dominio.conteudo.Mentoria;
@@ -10,7 +14,8 @@ import bootcamp.dominio.pessoa.Especialista;
 public class MentoriaController {
   MentoriaRepository mentoriaRepository = new MentoriaRepository();
 
-  public void criar(String titulo, String descricao, Especialista especialista, LocalDate data) {
+  public void criar(String titulo, String descricao, Especialista especialista, LocalDate data) throws 
+          IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException, JSONException {
     Mentoria Mentoria = new Mentoria(titulo, descricao, especialista, data);
     mentoriaRepository.criar(Mentoria);
   }
@@ -27,7 +32,8 @@ public class MentoriaController {
     mentoriaRepository.editarData(titulo, novaData);
   }
 
-  public void deletar(String nome) {
+  public void deletar(String nome) throws IllegalAccessException, IllegalArgumentException, 
+                                          InvocationTargetException, JSONException, IOException {
     mentoriaRepository.deletar(nome);
   }
 

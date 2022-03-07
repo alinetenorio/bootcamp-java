@@ -1,8 +1,11 @@
 package bootcamp.dados;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dominio.Bootcamp;
 
@@ -20,9 +23,11 @@ public class BootcampRepository {
     listaBootcamps.get(listaBootcamps.indexOf(atual)).setDescricao(novaDescricao);    
   }
 
-  public void deletar(String nome) {
+  public void deletar(String nome) throws IllegalAccessException, IllegalArgumentException, 
+                                          InvocationTargetException, JSONException, IOException {
     Bootcamp atual = listar(nome);
     listaBootcamps.remove(atual);
+    arquivo.deletar(atual);
   }
 
   public Bootcamp listar(String nome) {
@@ -34,5 +39,9 @@ public class BootcampRepository {
 
   public List<Bootcamp> listarTodos() {
     return this.listaBootcamps;
+  }
+
+  public void carregarDados() {
+    this.listaBootcamps = arquivo.carregarDados("Bootcamp");
   }
 }

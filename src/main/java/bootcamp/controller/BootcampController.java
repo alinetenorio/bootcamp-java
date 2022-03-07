@@ -1,7 +1,10 @@
 package bootcamp.controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import org.json.JSONException;
 
 import bootcamp.dados.BootcampRepository;
 import bootcamp.dominio.Bootcamp;
@@ -18,7 +21,8 @@ public class BootcampController {
     bootcampRepository.editarDescricao(nome, descricao);
   }
 
-  public void deletar(String nome) {
+  public void deletar(String nome) throws IllegalAccessException, IllegalArgumentException, 
+                                          InvocationTargetException, JSONException, IOException {
     bootcampRepository.deletar(nome);
   }
 
