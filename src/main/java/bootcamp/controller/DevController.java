@@ -7,6 +7,7 @@ import java.util.List;
 import org.json.JSONException;
 
 import bootcamp.dados.DevRepository;
+import bootcamp.dominio.Bootcamp;
 import bootcamp.dominio.pessoa.Dev;
 import bootcamp.service.DevService;
 
@@ -16,11 +17,14 @@ public class DevController {
   BootcampController bootcampController = new BootcampController();
   
   public void inscreverEmBootcamp(String emailDev, String nomeBootcamp) {
-    devService.inscreverEmBootcamp(listar(emailDev), bootcampController.listar(nomeBootcamp));
+    Bootcamp b = bootcampController.listar(nomeBootcamp);
+    devService.inscreverEmBootcamp(listar(emailDev), b);
   }
 
-  public void progredir(String emailDev, String nomeBootcamp) {
-    devService.progredir(listar(emailDev), bootcampController.listar(nomeBootcamp));
+  public String progredir(String emailDev, String nomeBootcamp) {
+    Dev dev = listar(emailDev);
+    devService.progredir(dev, bootcampController.listar(nomeBootcamp));
+    return dev.getProgressos().get(nomeBootcamp).toString();
   }
   
   public void criar(String nome, String email) throws IllegalAccessException, IllegalArgumentException, 
@@ -33,7 +37,8 @@ public class DevController {
     devRepository.editarNome(nome, email);
   }
 
-  public void deletar(String email) {
+  public void deletar(String email) throws IllegalAccessException, IllegalArgumentException, 
+                    InvocationTargetException, JSONException, IOException {
     devRepository.deletar(email);
   }
 

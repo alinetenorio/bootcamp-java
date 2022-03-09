@@ -1,5 +1,0 @@
-{ "jsonobjects":[
-{"Especialista":"Nome: nome\nEmail: email\nCargo: cargo\nEspecialidade: BACKEND","Descricao":"Java","CargaHoraria":99,"Titulo":"GFT 4"}
-, {"Especialista":"Nome: nome\nEmail: email\nCargo: cargo\nEspecialidade: BACKEND","Descricao":"Java","CargaHoraria":99,"Titulo":"GFT 4"}
-, {"Especialista":"bootcamp.dominio.pessoa.Especialista@c818063","Descricao":"Java","CargaHoraria":99,"Titulo":"GFT 4"}
-]}

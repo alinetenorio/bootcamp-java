@@ -12,7 +12,7 @@ import bootcamp.dominio.conteudo.Mentoria;
 import bootcamp.dominio.pessoa.Especialista;
 
 public class MentoriaRepository {
-  private final List<Mentoria> listaMentorias = new ArrayList<>();
+  private static final List<Mentoria> listaMentorias = new ArrayList<>();
   private final Arquivo<Mentoria> arquivo = new Arquivo<>();
 
   public void criar(Mentoria m) throws IllegalAccessException, IllegalArgumentException, 

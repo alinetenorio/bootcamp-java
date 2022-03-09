@@ -10,7 +10,7 @@ import org.json.JSONException;
 import bootcamp.dominio.pessoa.Especialista;
 
 public class EspecialistaRepository {
-  private final List<Especialista> listaEspecialistas = new ArrayList<>();
+  private static final List<Especialista> listaEspecialistas = new ArrayList<>();
   private final Arquivo<Especialista> arquivo = new Arquivo<>();
 
   public void criar(Especialista especialista) throws IllegalAccessException, IllegalArgumentException, 

@@ -31,7 +31,8 @@ public class CursoController {
     cursoRepository.editarCargaHoraria(titulo, novaCargaHoraria);
   }
 
-  public void deletar(String nome) {
+  public void deletar(String nome) throws IllegalAccessException, IllegalArgumentException, 
+                                          InvocationTargetException, JSONException, IOException {
     cursoRepository.deletar(nome);
   }
 

@@ -10,7 +10,7 @@ import org.json.JSONException;
 import bootcamp.dominio.pessoa.Dev;
 
 public class DevRepository {
-  private final List<Dev> listaDevs = new ArrayList<>();
+  private static final List<Dev> listaDevs = new ArrayList<>();
   private final Arquivo<Dev> arquivo = new Arquivo<>();
 
   public void criar(Dev dev) throws IllegalAccessException, IllegalArgumentException, 

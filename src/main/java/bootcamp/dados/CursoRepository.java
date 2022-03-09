@@ -11,7 +11,7 @@ import bootcamp.dominio.conteudo.Curso;
 import bootcamp.dominio.pessoa.Especialista;
 
 public class CursoRepository {
-  private final List<Curso> listaCursos = new ArrayList<>();
+  private static final List<Curso> listaCursos = new ArrayList<>();
   private final Arquivo<Curso> arquivo = new Arquivo<>();
 
   public void criar(Curso c) throws IOException, IllegalAccessException, IllegalArgumentException, 

@@ -10,7 +10,7 @@ import org.json.JSONException;
 import bootcamp.dominio.Progresso;
 
 public class ProgressoRepository {
-  private final List<Progresso> listaProgressos = new ArrayList<>();
+  private static final List<Progresso> listaProgressos = new ArrayList<>();
   private final Arquivo<Progresso> arquivo = new Arquivo<>();
 
   public void criar(Progresso p) throws IllegalAccessException, IllegalArgumentException, 

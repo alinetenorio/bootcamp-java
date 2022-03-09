@@ -36,4 +36,8 @@ public class Progresso {
     dev.adicionarXpTotal(xp);
   } 
 
+  public String toString() {
+    return "Conteúdos concluídos: " + this.getConteudosConcluidos().size() + 
+            "\nXP: " + this.getXp();
+  }
 }

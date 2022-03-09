@@ -10,8 +10,12 @@ import org.json.JSONException;
 import bootcamp.dominio.Bootcamp;
 
 public class BootcampRepository {
-  private final List<Bootcamp> listaBootcamps = new ArrayList<>();
-  private final Arquivo<Bootcamp> arquivo = new Arquivo<>();
+  private static final List<Bootcamp> listaBootcamps = new ArrayList<>();
+  private final Arquivo<Bootcamp> arquivo;
+
+  public BootcampRepository() {
+    arquivo = new Arquivo<>();
+  }
 
   public void criar(Bootcamp b) throws IOException, Exception{
     listaBootcamps.add(b);
@@ -41,7 +45,4 @@ public class BootcampRepository {
     return this.listaBootcamps;
   }
 
-  public void carregarDados() {
-    this.listaBootcamps = arquivo.carregarDados("Bootcamp");
-  }
 }
